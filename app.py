@@ -27,8 +27,17 @@ def save_users(users):
 
 @app.route('/')
 def index():
-    """Home page"""
-    return render_template('index.html')
+    """Home page - check if user is registered and redirect accordingly"""
+    # Check if user has a session cookie
+    if 'user_id' in session:
+        user_id = session['user_id']
+        users = load_users()
+        # If user is registered, show their status
+        if user_id in users:
+            return redirect(url_for('status'))
+
+    # If not registered, redirect to registration
+    return redirect(url_for('register'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -48,7 +57,8 @@ def register():
         session.permanent = True
         session['user_id'] = user_id
 
-        return redirect(url_for('registration_success'))
+        # Redirect directly to status page
+        return redirect(url_for('status'))
 
     return render_template('register.html')
 
