@@ -30,14 +30,6 @@
             color: #555;
             font-weight: bold;
         }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
         .radio-group {
             display: flex;
             gap: 20px;
@@ -54,17 +46,27 @@
             cursor: pointer;
         }
         button {
-            padding: 12px 30px;
+            width: 100%;
+            padding: 15px 40px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         button:hover {
             background-color: #218838;
+        }
+        .cookie-notice {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
         }
         .back-link {
             display: inline-block;
@@ -80,14 +82,12 @@
 <body>
     <div class="container">
         <h1>Driver Registration</h1>
-        <p>Please fill out the form below to register.</p>
+
+        <div class="cookie-notice">
+            By clicking "Accept and Continue", you agree to our use of cookies to remember your driver status on this device.
+        </div>
 
         <form method="POST" action="/register">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-
             <div class="form-group">
                 <label>Are you a new driver?</label>
                 <div class="radio-group">
@@ -102,7 +102,7 @@
                 </div>
             </div>
 
-            <button type="submit">Register</button>
+            <button type="submit">Accept and Continue</button>
         </form>
 
         <a href="/" class="back-link">Back to Home</a>

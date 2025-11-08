@@ -21,36 +21,6 @@
         h1 {
             color: #333;
         }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-            font-weight: bold;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        button {
-            padding: 12px 30px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
         .status-box {
             margin-top: 30px;
             padding: 20px;
@@ -92,11 +62,11 @@
 
             {% if driver_info.is_new_driver %}
             <div class="status-box status-new">
-                <strong>{{ username }}</strong> is a <strong>NEW DRIVER</strong>
+                <strong>You are a NEW DRIVER</strong>
             </div>
             {% else %}
             <div class="status-box status-experienced">
-                <strong>{{ username }}</strong> is <strong>NOT a new driver</strong> (experienced driver)
+                <strong>You are NOT a new driver</strong> (experienced driver)
             </div>
             {% endif %}
         {% else %}
