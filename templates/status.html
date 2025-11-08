@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Status - Driver App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .status-box {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+        .status-new {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+        .status-experienced {
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        .status-not-found {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Driver Status</h1>
+
+        {% if is_recognized %}
+            <p>Welcome back! Your driver status is displayed below.</p>
+
+            {% if driver_info.is_new_driver %}
+            <div class="status-box status-new">
+                <strong>{{ username }}</strong> is a <strong>NEW DRIVER</strong>
+            </div>
+            {% else %}
+            <div class="status-box status-experienced">
+                <strong>{{ username }}</strong> is <strong>NOT a new driver</strong> (experienced driver)
+            </div>
+            {% endif %}
+        {% else %}
+            <div class="status-box status-not-found">
+                <strong>User not recognized</strong><br>
+                You haven't registered yet or your session has expired.<br>
+                Please register first to check your driver status.
+            </div>
+            <a href="/register" class="back-link" style="display: inline-block; margin-top: 20px; padding: 12px 24px; background-color: #28a745; color: white; text-decoration: none; border-radius: 4px;">Register Now</a>
+        {% endif %}
+
+        <a href="/" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
