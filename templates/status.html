@@ -80,5 +80,44 @@
 
         <a href="/" class="back-link">Back to Home</a>
     </div>
+
+    <script>
+        // Function to play a beep sound
+        function playBeep() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            // Set frequency (800 Hz for a clear beep)
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+
+            // Set volume
+            gainNode.gain.value = 0.3;
+
+            // Play beep for 200ms
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.2);
+        }
+
+        // Function to play two beeps with a pause
+        function playTwoBeeps() {
+            playBeep();
+            setTimeout(function() {
+                playBeep();
+            }, 400); // 400ms pause between beeps
+        }
+
+        // Check if user is a new driver and play beeps
+        {% if is_recognized and driver_info.is_new_driver %}
+        window.addEventListener('load', function() {
+            // Small delay to ensure page is fully loaded
+            setTimeout(playTwoBeeps, 300);
+        });
+        {% endif %}
+    </script>
 </body>
 </html>
