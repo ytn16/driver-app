@@ -64,6 +64,7 @@
             <div class="status-box status-new">
                 <strong>You are a NEW DRIVER</strong>
             </div>
+            <button onclick="playTwoBeeps()" style="margin-top: 20px; padding: 12px 24px; background-color: #ffc107; color: #856404; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer;">🔊 Play Alert Sound</button>
             {% else %}
             <div class="status-box status-experienced">
                 <strong>You are NOT a new driver</strong> (experienced driver)
@@ -110,14 +111,6 @@
                 playBeep();
             }, 400); // 400ms pause between beeps
         }
-
-        // Check if user is a new driver and play beeps
-        {% if is_recognized and driver_info.is_new_driver %}
-        window.addEventListener('load', function() {
-            // Small delay to ensure page is fully loaded
-            setTimeout(playTwoBeeps, 300);
-        });
-        {% endif %}
     </script>
 </body>
 </html>
